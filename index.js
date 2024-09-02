@@ -9,7 +9,11 @@ const server = http.createServer(app);
 app.use(express.json());
 app.use(
   cors({
-    origin: ["http://localhost:5173", "http://localhost:8081"],
+    origin: [
+      "http://localhost:5173",
+      "http://localhost:8081",
+      "https://locationtest-mmy5.onrender.com",
+    ],
     methods: ["GET", "POST"],
     credentials: true,
   })
@@ -17,7 +21,11 @@ app.use(
 
 const io = new Server(server, {
   cors: {
-    origin: ["http://localhost:5173", "http://localhost:8081"],
+    origin: [
+      "http://localhost:5173",
+      "http://localhost:8081",
+      "https://locationtest-mmy5.onrender.com",
+    ],
     methods: ["GET", "POST"],
     credentials: true,
   },
