@@ -52,23 +52,21 @@ app.post("/getRoute", async (req, res) => {
 });
 
 io.on("connection", (socket) => {
-  console.log("A user connected");
-
   socket.on("locationUpdate", (location) => {
-    console.log(location);
     io.emit("locationUpdate", [
       location?.coords?.latitude,
       location?.coords.longitude,
     ]);
   });
+  socket.on("sendLocation", () => {
+    io.emit("sendLocation");
+  });
 
   socket.on("disconnect", () => {
-    console.log("A user disconnected");
     io.emit("disconnecta");
   });
 
   socket.on("car", (e) => {
-    console.log("car", e);
     io.emit("car", e);
   });
 });
